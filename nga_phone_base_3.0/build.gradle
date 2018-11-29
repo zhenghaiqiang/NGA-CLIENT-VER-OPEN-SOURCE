@@ -15,19 +15,6 @@ android {
     compileSdkVersion project.compileSdkVersion
     buildToolsVersion project.buildToolsVersion
 
-    signingConfigs {
-        signingConfig {
-            if (isJenkins()) {
-                storeFile file('../../android19910914.keystore')
-            } else {
-                storeFile file('..\\keystore\\nga.jks')
-            }
-            storePassword '19910914'
-            keyAlias 'android.keystore'
-            keyPassword '19910914'
-        }
-    }
-
     packagingOptions {
         exclude 'lib/arm64-v8a/*.so'
         exclude 'lib/x86_64/*.so'
@@ -57,6 +44,21 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    signingConfigs {
+        debug {
+            keyAlias 'zhqdebug'
+            keyPassword 'wbzdghdn'
+            storeFile file('debug/zhqdebug.jks')
+            storePassword 'wbzdghdn'
+        }
+        release {
+            keyAlias 'zhqdebug'
+            keyPassword 'wbzdghdn'
+            storeFile file('debug/zhqdebug.jks')
+            storePassword 'wbzdghdn'
+        }
+    }
+
     buildTypes {
         release {
             debuggable false
@@ -65,12 +67,13 @@ android {
             pseudoLocalesEnabled false
             minifyEnabled false
             zipAlignEnabled true
-            signingConfig signingConfigs.signingConfig
+            signingConfig signingConfigs.release
         }
         debug {
             applicationIdSuffix ".debug"
             debuggable true
             minifyEnabled false
+            signingConfig signingConfigs.debug
         }
     }
 

@@ -2,6 +2,7 @@ package sp.phone.mvp.presenter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -115,6 +116,11 @@ public class BoardPresenter implements BoardContract.Presenter, PageCategoryOwne
         if (position != 0 && !HttpUtil.HOST_PORT.equals("")) {
             HttpUtil.HOST = HttpUtil.HOST_PORT + HttpUtil.Servlet_timer;
         }
+        boolean isHot = false;
+        if(TextUtils.equals(fidString,"-700")) {
+            fidString = "-7";
+            isHot = true;
+        }
         int fid = 0;
         try {
             fid = Integer.parseInt(fidString);
@@ -143,6 +149,11 @@ public class BoardPresenter implements BoardContract.Presenter, PageCategoryOwne
             Intent intent = new Intent();
             intent.putExtra("tab", "1");
             intent.putExtra("fid", fid);
+            if(isHot) {
+                intent.putExtra("twentyfour", 1);
+            } else {
+                intent.putExtra("twentyfour", 0);
+            }
             intent.setClass(getContext(), config.topicActivityClass);
             getContext().startActivity(intent);
         }

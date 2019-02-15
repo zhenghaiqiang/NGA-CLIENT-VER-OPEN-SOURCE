@@ -248,7 +248,7 @@ public class BoardFragment extends BaseFragment implements BoardContract.View, A
             mBoardPagerAdapter = new BoardPagerAdapter(getChildFragmentManager(), (PageCategoryOwner) mPresenter);
             mViewPager.setAdapter(mBoardPagerAdapter);
             if (((PageCategoryOwner) mPresenter).getCategory(0).size() == 0) {
-                mViewPager.setCurrentItem(1);
+                mViewPager.setCurrentItem(2);
             }
         } else {
             mBoardPagerAdapter.notifyDataSetChanged();

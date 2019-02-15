@@ -6,8 +6,6 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import sp.phone.fragment.BoardCategoryFragment;
 import sp.phone.interfaces.PageCategoryOwner;
-import sp.phone.fragment.BoardCategoryFragment;
-import sp.phone.interfaces.PageCategoryOwner;
 
 /**
  * 版块分页Adapter

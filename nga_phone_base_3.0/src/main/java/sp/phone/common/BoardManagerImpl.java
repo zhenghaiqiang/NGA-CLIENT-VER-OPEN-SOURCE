@@ -88,6 +88,7 @@ public class BoardManagerImpl implements BoardManager {
         category.setCategoryIndex(mCategoryList.size());
         mCategoryList.add(category);
         category.add(new Board("-7", "大漩涡"));
+        category.add(new Board("-700", "大漩涡热门"));
         category.add(new Board("-343809", "汽车俱乐部"));
         category.add(new Board("-81981", "生命之杯"));
         category.add(new Board("-576177", "影音讨论区"));

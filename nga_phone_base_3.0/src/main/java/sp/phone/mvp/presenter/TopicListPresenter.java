@@ -94,7 +94,16 @@ public class TopicListPresenter extends BasePresenter<TopicSearchFragment, Topic
             if (pageQueriedCounter == twentyFourPageCount) {
                 twentyFourCurPos = 0;
                 List<ThreadPageInfo> threadPageList = twentyFourList.getThreadPageList();
-                threadPageList.removeIf(item -> (data.curTime - item.getPostDate() > 24 * 60 * 60));
+
+                List<ThreadPageInfo> newThreadPageList = new ArrayList<>();
+                for (ThreadPageInfo item:threadPageList) {
+                    if(data.curTime - item.getPostDate() > 24 * 60 * 60) {
+                    } else {
+                        newThreadPageList.add(item);
+                    }
+                }
+                twentyFourList.setThreadPageList(newThreadPageList);
+
                 if (threadPageList.size() > twentyFourTopicCount) {
                     threadPageList.subList(twentyFourTopicCount, threadPageList.size());
                 }
